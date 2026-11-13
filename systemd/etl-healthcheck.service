@@ -1,0 +1,10 @@
+[Unit]
+Description=Check ETL pipeline health and send Telegram alerts
+After=etl-pipeline.service
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/etl-pipeline/healthcheck.sh
+StandardOutput=journal
+StandardError=journal

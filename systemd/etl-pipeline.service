@@ -1,0 +1,19 @@
+[Unit]
+Description=Demo nightly ETL pipeline
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=etl
+Group=etl
+WorkingDirectory=/opt/etl-pipeline
+ExecStart=/opt/etl-pipeline/venv/bin/python /opt/etl-pipeline/etl_worker.py
+# Keep a successful oneshot unit active so healthcheck can use is-active.
+RemainAfterExit=no
+# systemd captures stdout/stderr in journald as well as the app log.
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

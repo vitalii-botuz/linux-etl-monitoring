@@ -1,0 +1,10 @@
+[Unit]
+Description=Run ETL healthcheck daily at 03:00 UTC
+
+[Timer]
+OnCalendar=*-*-* 03:00:00 UTC
+Persistent=true
+Unit=etl-healthcheck.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+/var/log/etl/pipeline.log {
+    daily
+    rotate 14
+    compress
+    delaycompress
+    missingok
+    notifempty
+    dateext
+    dateyesterday
+    create 0640 etl etl
+}
